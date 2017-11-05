@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+xmlns:jee="http://www.springframework.org/schema/jee"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!-- springmvc的配置文件 包含网站跳转逻辑控制--> 
+	<context:component-scan base-package="maven_example.simple" use-default-filters="false">
+		<!-- 仅仅扫描 控制器,不用全部扫描 -->
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- 配置视图解析器 以哪个 开始，以什么结尾 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="WebContent/jsps/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<!-- 两个标准配置 -->
+	<!-- 将springmvc 不能处理的请求交给tomcat ,一般用于静态资源访问 -->
+	<mvc:default-servlet-handler/> 
+	<!-- 支持springmvc 更高级的东西 -->
+	<mvc:annotation-driven/>
+</beans>
