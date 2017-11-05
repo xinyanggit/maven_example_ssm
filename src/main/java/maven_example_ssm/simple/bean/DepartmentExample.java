@@ -3,6 +3,11 @@ package maven_example_ssm.simple.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ¼òµ¥×¢ÊÍ
+ * @author xinxin
+ *
+ */
 public class DepartmentExample {
     protected String orderByClause;
 
